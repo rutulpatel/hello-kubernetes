@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: hello-kubernetes
-          image: hello-kubernetes:latest
+          image: rutul/hello-kubernetes:latest
           ports:
           - containerPort: 8080
