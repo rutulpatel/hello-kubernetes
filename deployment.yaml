@@ -1,0 +1,20 @@
+# Kubernetes app deployment yaml file
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-kubernetes
+spec:
+  selector:
+    matchLabels:
+      app: hello-kubernetes
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hello-kubernetes
+    spec:
+      containers:
+        - name: hello-kubernetes
+          image: hello-kubernetes:latest
+          ports:
+          - containerPort: 8080
