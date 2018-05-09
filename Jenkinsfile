@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'unix'
-    }
+    agent none
     stages {
         stage('Get version'){
             agent {
