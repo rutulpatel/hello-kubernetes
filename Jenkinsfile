@@ -18,7 +18,6 @@ pipeline {
                 sh 'docker ps'
                 echo '$BUILD_NUMBER'
                 echo "$BUILD_URL"
-                echo $GIT_COMMIT
                 sh 'echo $GIT_COMMIT'
             }
         }
