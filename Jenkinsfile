@@ -17,7 +17,7 @@ pipeline {
                 label "docker"
             }
             steps {
-                sh 'docker build -t rutul/hello-kubernetes:$MAJOR_VERSION.$BUILD_NUMBER -t ${image_name}:latest .'
+                sh 'docker build -t rutul/hello-kubernetes:$MAJOR_VERSION.$BUILD_NUMBER -t rutul/hello-kubernetes:latest .'
             }
         }
 
