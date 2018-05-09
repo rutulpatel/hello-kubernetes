@@ -27,7 +27,7 @@ pipeline {
                 label "docker"
             }
             steps {               
-                withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "hub.docker.com"]) {
+                withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "https://hub.docker.com"]) {
                     sh 'docker push rutul/hello-kubernetes:latest'
                 }
             }
