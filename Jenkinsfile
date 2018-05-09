@@ -17,8 +17,7 @@ pipeline {
                 label "docker"
             }
             steps {
-                def image_name = "rutul/hello-kubernetes"
-                sh 'docker build -t ${image_name}:$MAJOR_VERSION.$BUILD_NUMBER -t ${image_name}:latest .'
+                sh 'docker build -t rutul/hello-kubernetes:$MAJOR_VERSION.$BUILD_NUMBER -t ${image_name}:latest .'
             }
         }
 
@@ -27,10 +26,9 @@ pipeline {
             agent {
                 label "docker"
             }
-            steps {
-                def image_name = "rutul/hello-kubernetes"                
+            steps {               
                 withDockerRegistry([ credentialsId: "docker-hub-credentials", url: ""]) {
-                    sh 'docker push ${image_name}:latest'
+                    sh 'docker push rutul/hello-kubernetes:latest'
                 }
             }
         }
