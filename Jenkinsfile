@@ -25,9 +25,8 @@ pipeline {
                 label "docker"
             }
             steps {               
-                withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "https://hub.docker.com"]) {
-                    sh 'docker push rutul/hello-kubernetes:latest'
-                }
+                sh 'docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}'
+                sh 'docker push rutul/hello-kubernetes:latest'
             }
         }
 
@@ -41,6 +40,7 @@ pipeline {
 
     environment {
         MAJOR_VERSION = '1'
+        DOCKER_CREDS = credentials("docker-hub-credentials")
     }
 
 }
