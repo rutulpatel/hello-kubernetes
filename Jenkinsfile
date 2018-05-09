@@ -17,10 +17,10 @@ pipeline {
                 label "docker"
             }
             steps {
-                sh 'docker ps'
+                sh 'docker build -t rutul/hello-kubernetes:$MAJOR_VERSION.$BUILD_NUMBER .'
                 echo env.BUILD_NUMBER
-                echo env.BUILD_URL
-                sh 'echo $GIT_COMMIT'
+                echo env.MAJOR_VERSION
+                echo env.GIT_COMMIT
             }
         }
 
@@ -31,4 +31,9 @@ pipeline {
             }
         }
     }
+
+    environment {
+        MAJOR_VERSION = '1'
+    }
+
 }
