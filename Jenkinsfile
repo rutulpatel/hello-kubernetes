@@ -18,8 +18,8 @@ pipeline {
             }
             steps {
                 sh 'docker ps'
-                echo '$BUILD_NUMBER'
-                echo "$BUILD_URL"
+                echo 'env.BUILD_NUMBER'
+                echo "env.BUILD_URL"
                 sh 'echo $GIT_COMMIT'
             }
         }
