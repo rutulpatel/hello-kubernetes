@@ -31,9 +31,14 @@ pipeline {
         }
 
         stage('Clean up') {
+            agent {
+                label "docker"
+            }
             steps {
                 echo 'Cleaning up working dir'
                 deleteDir()
+                echo 'Deleting docker images other than latest'
+                docker rmi `docker images rutul/hello-kubernetes | grep -v latest | awk 'FNR != 1 { print $3 }'`
             }
         }
     }
