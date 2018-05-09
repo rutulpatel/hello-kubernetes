@@ -17,10 +17,21 @@ pipeline {
                 label "docker"
             }
             steps {
-                sh 'docker build -t rutul/hello-kubernetes:$MAJOR_VERSION.$BUILD_NUMBER .'
-                echo env.BUILD_NUMBER
-                echo env.MAJOR_VERSION
-                echo env.GIT_COMMIT
+                def image_name = "rutul/hello-kubernetes"
+                sh 'docker build -t ${image_name}:$MAJOR_VERSION.$BUILD_NUMBER -t ${image_name}:latest .'
+            }
+        }
+
+
+        stage('Publish'){
+            agent {
+                label "docker"
+            }
+            steps {
+                def image_name = "rutul/hello-kubernetes"                
+                withDockerRegistry([ credentialsId: "docker-hub-credentials", url: ""]) {
+                    sh 'docker push ${image_name}:latest'
+                }
             }
         }
 
