@@ -39,7 +39,7 @@ pipeline {
                 echo 'Cleaning up working dir'
                 deleteDir()
                 echo 'Deleting docker images other than latest'
-                sh 'docker images rutul/hello-kubernetes | grep -v latest | awk "FNR != 1 { print $3 }"'
+                sh "docker images rutul/hello-kubernetes | grep -v latest | awk ' FNR != 1 { print $3 }'"
             }
         }
     }
