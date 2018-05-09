@@ -26,6 +26,7 @@ pipeline {
             }
             steps {               
                 sh 'docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}'
+                //sh 'docker push rutul/hello-kubernetes:$MAJOR_VERSION.$BUILD_NUMBER'
                 sh 'docker push rutul/hello-kubernetes:latest'
             }
         }
