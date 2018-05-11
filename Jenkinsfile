@@ -56,7 +56,7 @@ pipeline {
 
     environment {
         MAJOR_VERSION = '1'
-        MINOR_VERSION = '1'
+        MINOR_VERSION = '2'
         DOCKER_CREDS = credentials("docker-hub-credentials")
     }
 
