@@ -31,6 +31,15 @@ pipeline {
             }
         }
 
+        stage('Deploy'){
+            agent {
+                label "kubectl"
+            }
+            steps {
+                sh 'kubectl get pods'
+            }
+        }
+
         stage('Clean up') {
             agent {
                 label "docker"
