@@ -26,7 +26,7 @@ pipeline {
             }
             steps {               
                 sh 'docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}'
-                //sh 'docker push rutul/hello-kubernetes:$MAJOR_VERSION.$BUILD_NUMBER'
+                sh 'docker push rutul/hello-kubernetes:$MAJOR_VERSION.$MINOR_VERSION'
                 sh 'docker push rutul/hello-kubernetes:latest'
             }
         }
@@ -36,6 +36,7 @@ pipeline {
                 label "kubectl"
             }
             steps {
+                sh 'kubectl apply -f deployment.yaml'
                 sh 'kubectl get pods'
             }
         }
@@ -55,6 +56,7 @@ pipeline {
 
     environment {
         MAJOR_VERSION = '1'
+        MINOR_VERSION = '1'
         DOCKER_CREDS = credentials("docker-hub-credentials")
     }
 
