@@ -1,0 +1,31 @@
+API Primitives
+    -   Object Spec
+    -   Object Status
+
+Common Kubernetes Objects
+-   Nodes
+-   Pods
+-   Deployments
+-   Services
+-   ConfigMaps
+
+
+Sample yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+        name: busybox
+    spec:
+        containers:
+        -   name: busybox
+            image: busybox
+            command:
+                - sleep
+                - "3600"
+
+
+Imperative
+running commands using kubectl ...
+
+Declarative
+running kubectl create -f <file_name>
