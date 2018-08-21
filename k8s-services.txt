@@ -1,0 +1,2 @@
+#start service using following command
+kubectl expose deployment hello-kubernetes --type=NodePort --name=hello-k8s
